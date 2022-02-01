@@ -25,11 +25,10 @@ provider "aws" {
 # DEPLOY THE WEBSERVER-CLUSTER MODULE
 # ------------------------------------------------------------------------------
 
-module "webserver_cluster" {
-  source = "../../../../modules/services/webserver-cluster"
-
-  cluster_name  = "webservers-prod"
-  instance_type = "m4.large"
+module "webserver" {
+  source = "git::git@github.com:sirkells/sample-tf-versioned-modules.git//modules/services/webserver?ref=v0.0.2"
+  cluster_name  = "webservers-dev"
+  instance_type = "t2.micro"
   min_size      = 2
   max_size      = 2
 }
